@@ -5,14 +5,15 @@
 
 `default_nettype none
 // pmodvga_06 - color tiles VGA 640x480 using TT VGA Playground Module Template
+// Consider clk 25 Mhz
 
 module pmodvga_06(
-//  input  wire [7:0] ui_in,    // Dedicated inputs
+    input  wire [7:0] ui_in,    // Dedicated inputs
     output wire [7:0] uo_out,   // Dedicated outputs
-//  input  wire [7:0] uio_in,   // IOs: Input path
+    input  wire [7:0] uio_in,   // IOs: Input path
     output wire [7:0] uio_out,  // IOs: Output path
-//  output wire [7:0] uio_oe,   // IOs: Enable path (active high: 0=input, 1=output)
-//  input  wire       ena,      // always 1 when the design is powered, so you can ignore it
+    output wire [7:0] uio_oe,   // IOs: Enable path (active high: 0=input, 1=output)
+    input  wire       ena,      // always 1 when the design is powered, so you can ignore it
     input  wire       clk,      // clock
     input  wire       rst_n     // reset_n - low to reset
 );
@@ -45,18 +46,14 @@ reg[25:0] t_cnt;            // Enables period > 1s
 assign uo_out = {hsync, B[0], G[0], R[0], vsync, B[1], G[1], R[1]};
   
 // Unused outputs assigned to 0.
-// Assign uio_out to R0,R1,G0,G1,B0,B1,X,X
-   assign uio_out = 0;
-// assign uio_oe  = 0;
+assign uio_out = 0;
+assign uio_oe  = 0;
 
 // Suppress unused signals warning
-// wire _unused_ok = &{ena, ui_in, uio_in};
-
-reg [9:0] counter;
-reg clk25;
+wire _unused_ok = &{ena, ui_in, uio_in};
 
 hvsync_generator hvsync_gen(
-  .clk(clk25),
+  .clk(clk),
   .reset(~rst_n),
   .hsync(hsync),
   .vsync(vsync),
@@ -125,10 +122,6 @@ always @(*) begin
 end		
 
 always @(posedge clk) begin
-     clk25 = ~clk25;
-  end
-
-always @(posedge clk25) begin
    if (!rst_n)
       begin
 		t_cnt  = 0;
