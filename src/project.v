@@ -125,9 +125,9 @@ always @(posedge clk) begin
    if (!rst_n)
       begin
 		t_cnt  = 0;
-		cor1   = 12'b000000000000;
-		cor2   = 12'b111100000000;
-		cor3   = 12'b000011110000;
+		cor1   = 12'b000000000000;// Color originally designed for Digilent PModVGA, 4 bits per color (RRRRGGGGBBBB)
+		cor2   = 12'b111100000000;// For TT PmodVGA colors only the highest order bits are assigned.
+		cor3   = 12'b000011110000;// "cor" is portuguese for color (colour).
 		cor4   = 12'b000000001111;
 		cor5   = 12'b111111110000;
 		cor6   = 12'b111100001111;
@@ -137,7 +137,7 @@ always @(posedge clk) begin
       end
    else
       begin
-      if (t_cnt==24999999) // 1 em 1 segundo
+		  if (t_cnt==24999999) // Every second (for a 25 Mhz clock)
 		     begin
 			  t_cnt = 0;
 			  cort = cor9;
