@@ -69,7 +69,7 @@ parameter YU = 160;//   |_____|______|______| YM
 parameter YM = 320;//   |                   |
 parameter YB = 480;//   |_____|______|______| YB
 
-// Tiles
+// Drawing Tiles
 always @(*) begin
    if ((pix_x>=0)&&(pix_x<XL)&&(pix_y>=0)&&(pix_y<YU)) 
       begin
