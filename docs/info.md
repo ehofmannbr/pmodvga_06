@@ -9,7 +9,7 @@ You can also include images in this folder and reference them in the markdown. E
 
 ## How it works
 
-This project displays moving color tiles on a VGA 640x480 screen. It's follows the Tiny Tapeout platform.
+This project displays moving color tiles on a VGA 640x480 screen. It's follows the Tiny Tapeout platform. Code is based on VGA Examples by Uri Shaked.
 
 ### Technical Details
 
