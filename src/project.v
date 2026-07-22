@@ -29,18 +29,18 @@ wire [9:0] pix_x;
 wire [9:0] pix_y;
 
 // Tile Registers
-reg[11:0] _cor;             // Saida do mux de cor
-reg[11:0] cor1;             // Registro de cor
-reg[11:0] cor2;             // Registro de cor
-reg[11:0] cor3;             // Registro de cor
-reg[11:0] cor4;             // Registro de cor
-reg[11:0] cor5;             // Registro de cor
-reg[11:0] cor6;             // Registro de cor
-reg[11:0] cor7;             // Registro de cor
-reg[11:0] cor8;             // Registro de cor
-reg[11:0] cor9;             // Registro de cor
-reg[11:0] cort;             // Registro de cor
-reg[25:0] t_cnt;            // Enables period > 1s
+	reg[11:0] _cor;         // Tile Color Register
+	reg[11:0] cor1;         // Color 1
+	reg[11:0] cor2;         // ...
+reg[11:0] cor3;             
+reg[11:0] cor4;             
+reg[11:0] cor5;             
+reg[11:0] cor6;             
+reg[11:0] cor7;             
+reg[11:0] cor8;             
+	reg[11:0] cor9;         // Color 9
+	reg[11:0] cort;         // Temp Color
+	reg[25:0] t_cnt;        // Color shift timer, supports 25Mhz and 50Mhz clocks
 
 // TinyVGA PMOD
 assign uo_out = {hsync, B[0], G[0], R[0], vsync, B[1], G[1], R[1]};
@@ -61,13 +61,13 @@ hvsync_generator hvsync_gen(
   .hpos(pix_x),
   .vpos(pix_y)
 );
-
-parameter XL = 213;
-parameter XM = 426;
-parameter XR = 640;
-parameter YU = 160;
-parameter YM = 320;
-parameter YB = 480;
+//                       XL     XM      XR
+parameter XL = 213;//   ---------------------
+parameter XM = 426;//   |_____|______|______| YU
+parameter XR = 640;//   |                   |
+parameter YU = 160;//   |_____|______|______| YM
+parameter YM = 320;//   |                   |
+parameter YB = 480;//   |_____|______|______| YB
 
 // Tiles
 always @(*) begin
