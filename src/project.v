@@ -7,7 +7,7 @@
 // pmodvga_06 - color tiles VGA 640x480 using TT VGA Playground Module Template
 // Consider clk 25 Mhz
 
-module tt_um_pmodvga_06(
+module tt_um_ehofmannbr_pmodvga_06(
     input  wire [7:0] ui_in,    // Dedicated inputs
     output wire [7:0] uo_out,   // Dedicated outputs
     input  wire [7:0] uio_in,   // IOs: Input path
