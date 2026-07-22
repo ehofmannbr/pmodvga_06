@@ -32,12 +32,12 @@ wire [9:0] pix_y;
 	reg[11:0] _cor;         // Tile Color Register
 	reg[11:0] cor1;         // Color 1
 	reg[11:0] cor2;         // ...
-reg[11:0] cor3;             
-reg[11:0] cor4;             
-reg[11:0] cor5;             
-reg[11:0] cor6;             
-reg[11:0] cor7;             
-reg[11:0] cor8;             
+    reg[11:0] cor3;             
+    reg[11:0] cor4;             
+    reg[11:0] cor5;             
+    reg[11:0] cor6;             
+    reg[11:0] cor7;             
+    reg[11:0] cor8;             
 	reg[11:0] cor9;         // Color 9
 	reg[11:0] cort;         // Temp Color
 	reg[25:0] t_cnt;        // Color shift timer, supports 25Mhz and 50Mhz clocks
