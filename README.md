@@ -1,1 +1,1 @@
-This is an attempt to adapt a QuartusII Verilog file to VGA Playground using TT modules
+1st attempt at creating a TT VGA Playground module.
