@@ -40,7 +40,7 @@ wire [9:0] pix_y;
     reg[11:0] cor8;             
 	reg[11:0] cor9;         // Color 9
 	reg[11:0] cort;         // Temp Color
-	reg[25:0] t_cnt;        // Color shift timer, supports 25Mhz and 50Mhz clocks
+	reg[25:0] t_cnt;        // Color shift timer, supports 25Mhz or 50Mhz clock
 
 // TinyVGA PMOD
 assign uo_out = {hsync, B[0], G[0], R[0], vsync, B[1], G[1], R[1]};
